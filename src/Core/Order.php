@@ -2,6 +2,7 @@
 
 namespace StingBo\Mengine\Core;
 
+use Illuminate\Support\Facades\Log;
 use InvalidArgumentException;
 
 class Order
@@ -158,11 +159,19 @@ class Order
      */
     public function setVolume($volume)
     {
-        if (floatval($volume) <= 0) {
+        if (floatval(number_format($volume,8)) <= 0) {
             throw new InvalidArgumentException(__METHOD__.' expects argument volume greater than 0.');
         }
 
-        $this->volume = bcmul($volume, bcpow(10, $this->accuracy));
+        /**
+         * mehdi
+         * There is a problem here that the package changed
+         *
+         * The main package code
+         * $this->volume = bcmul($volume, bcpow(10, $this->accuracy));
+         */
+        $volume1 = number_format($volume, 8, '.', '');
+        $this->volume = bcmul($volume1, bcpow(10, $this->accuracy));
 
         return $this;
     }
