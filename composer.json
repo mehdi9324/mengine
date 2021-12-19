@@ -1,5 +1,5 @@
 {
-    "name": "sting_bo/mengine",
+    "name": "mehdi9324/mengine",
     "description": "Matching Engine For Laravel",
     "require": {
         "predis/predis": "^1.1"
