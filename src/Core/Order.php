@@ -165,7 +165,7 @@ class Order
 
         /**
          * mehdi
-         * There is a problem here that the package changed
+         * Here was a problem here that the package changed
          *
          * The main package code
          * $this->volume = bcmul($volume, bcpow(10, $this->accuracy));
@@ -182,12 +182,22 @@ class Order
     public function setPrice($price)
     {
         if (floatval($price) <= 0) {
-            throw new InvalidArgumentException(__METHOD__.' expects argument price greater than 0.');
+            throw new InvalidArgumentException(_METHOD_.' expects argument price greater than 0.');
         }
 
-        $this->price = bcmul($price, bcpow(10, $this->accuracy));
+        /**
+         * mehdi
+         * Here was a problem here that the package changed
+         *
+         * The main package code
+         * only
+         * $this->price = bcmul($price, bcpow(10, $this->accuracy));
+         */
+        $volume1 = number_format($price, 8, '.', '');
+        $this->price = bcmul($volume1, bcpow(10, $this->accuracy));
 
         return $this;
+
     }
 
     /**
