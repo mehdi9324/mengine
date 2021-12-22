@@ -182,7 +182,7 @@ class Order
     public function setPrice($price)
     {
         if (floatval($price) <= 0) {
-            throw new InvalidArgumentException(_METHOD_.' expects argument price greater than 0.');
+            throw new InvalidArgumentException(__METHOD__.' expects argument price greater than 0.');
         }
 
         /**
